@@ -10,15 +10,14 @@ The purpose of this project is to showcase various testing techniques in Playwri
 - **API Interaction**: Examples of how API tests could be integrated using Playwright.
 - **Screenplay Pattern**: Implementation of the Screenplay pattern to organise test scripts in a highly readable and modular format.
 
-# Preequisites
+# Prerequisites
 Before you can run these tests, you will need to install several dependencies
 
-- Node.js
-- npm
+- Node.js (includes npm)
 - Playwright
 - TypeScript
 
-You can install Node.js and NPM from [NodeJs.org](https://nodejs.org). After installation, you can install Playwright and TypeScript using npm:
+You can install Node.js and npm from [NodeJs.org](https://nodejs.org). After installation, you can install Playwright and TypeScript using npm:
 
 ```bash
 npm install playwright typescript
@@ -31,12 +30,12 @@ git clone https://github.com/majorelk/Playwright-Screenplay-Demo.git
 cd Playwright-Screenplay-Demo
 ```
 
-Install the required NPM packages:
+Install the required npm packages:
 ```
 npm install
 ```
 
-## Running the tests
+## Running the Tests
 To run the front-end UI tests, execute:
 ```bash
 npm run test-ui
@@ -57,5 +56,5 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ### Note
 
-This README assumes that you will set up scripts named `test-ui` and `test-api` in your `package.json`. You should adapt the content to match the actual configuration and scripts of your project. This README provides a comprehensive guide for users to get started with the project, explaining how to set up, run tests, and contribute.
+This README assumes that you will set up scripts named test-ui and test-api in your package.json. You should adapt the content to match the actual configuration and scripts of your project. This README provides a comprehensive guide for users to get started with the project, explaining how to set up, run tests, and contribute.
 
