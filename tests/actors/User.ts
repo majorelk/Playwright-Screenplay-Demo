@@ -10,13 +10,27 @@ export class User {
     this.page = page;
   }
 
-  async loginAs() {
-    await this.page.goto("https://example.com/login");
-    await this.page.fill('input[name="email"]', process.env.EMAIL);
-    await this.page.fill('input[name="password"]', process.env.PASSWORD);
-    await this.page.click('button[type="submit"]');
+  async loginAs(userType: string) {
+    const usernameMap: { [key: string]: string } = {
+        standard_user: 'standard_user',
+        locked_out_user: 'locked_out_user',
+        problem_user: 'problem_user',
+        performance_glitch_user: 'performance_glitch_user',
+        error_user: 'error_user',
+        visual_user: 'visual_user',
+    };
+
+    const username = usernameMap[userType];
+    const password = process.env.PASSWORD; // This uses the USER_PASSWORD environment variable set in the .env file
+
+    if (!password) {
+        throw new Error("USER_PASSWORD not found in environment variables"); 
+    }
+
+
+    await this.page.goto("https://www.saucedemo.com");
+    await this.page.fill('#user-name', username);
+    await this.page.fill('#password', password);
+    await this.page.click('#login-button');
   }
 }
- 
- Now, we can use the  User  class in our test file. 
- // Path: tests/login.test.ts
