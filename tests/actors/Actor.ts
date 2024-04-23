@@ -11,7 +11,8 @@ export class Actor {
     private name: string;
     page: Page;
 
-    constructor(name: string) {
+    constructor(name: string, page: Page) {
+        this.page = page;
         this.name = name;
     }
 
@@ -31,7 +32,7 @@ export class Actor {
     }
 
     // Static method to create a named actor
-    static named(name: string) {
-        return new Actor(name);
+    static named(name: string, page: Page) {
+        return new Actor(name, page);
     }
 }
