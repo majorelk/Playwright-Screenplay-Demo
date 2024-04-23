@@ -1,11 +1,32 @@
 {
+  "name": "playwright-screenplay-demo",
+  "version": "1.0.0",
+  "description": "Automated testing suite for the Sauce Demo website using Playwright, TypeScript, and the Screenplay pattern.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --project=Desktop Chromium",
+    "prepare": "npm run build",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/majorelk/Playwright-Screenplay-Demo.git"
+  },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "playwright": "^1.43.1",
-    "typescript": "^5.4.5"
+    "playwright": "^1.43.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.1",
-    "@types/node": "^20.12.7"
+    "@types/node": "^20.12.7",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
