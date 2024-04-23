@@ -1,28 +1,26 @@
 import { test, expect } from '@playwright/test';
 import { Actor } from '@actors/Actor';
 import { LoginTask } from '@tasks/LoginTask';
-import { getPageTitle } from '@questions/PageQuestions';
+import { canSeePageTitle } from '@questions/PageQuestions';
 import { Navigate } from '@interactions/Navigate';
+import { users } from '@utils/Users';
 
 test.describe('Login Functionality Tests', () => {
     test('Standard user can log in successfully', async ({ page }) => {
-        const actor = new Actor(page);
-
-        await Navigate.toLoginPage(page);
-
-        await actor.perform(LoginTask.loginWithCredentials('standard_user'));
-
-        const title = await actor.ask(() => getPageTitle(page));
+        const actor = Actor.named('Standard User');
+        await actor.perform(Navigate.toLoginPage);
+        await actor.attemptsTo(LoginTask.loginWithCredentials(users.standard.username, users.standard.password));
+        const title = await actor.ask(canSeePageTitle);
 
         expect(title).toBe('Swag Labs');
     });
 
     test('Locked out user cannot log in', async ({ page }) => {
-        const actor = new Actor(page);
+        const actor = Actor.named('Locked Out User');
 
         // Navigate and login
-        await Navigate.toLoginPage(page);
-        await actor.perform(LoginTask.loginWithCredentials('locked_out_user'));
+        await actor.perform(Navigate.toLoginPage);
+        await actor.perform(LoginTask.loginWithCredentials(users.lockedOut.username, users.lockedOut.password));
 
         // Check for error message
         const errorMessage = await page.locator('.error-message-container').textContent();
@@ -30,29 +28,29 @@ test.describe('Login Functionality Tests', () => {
     });
     
     test('Performance glitch user experiences slow login', async ({ page }) => {
-        const actor = new Actor(page);
+        const actor = Actor.named('Performance glitch user');
 
         await Navigate.toLoginPage(page);
 
         const startTime = performance.now();
-        await actor.perform(LoginTask.loginWithCredentials('performance_glitch_user'));
+        await actor.perform(LoginTask.loginWithCredentials(users.performanceGlitch.username, users.performanceGlitch.password));
         const endTime = performance.now();
 
-        const title = await actor.ask(() => getPageTitle(page));
+        const title = await actor.ask(() => canSeePageTitle(page));
         expect(title).toBe('Swag Labs');
 
         const loginDuration = endTime - startTime;
         expect(loginDuration).toBeGreaterThan(1000); // Assuming performance glitch user takes over a second to log in
     });
 
-    test('Incorrect username or password displays an error message', async ({ page }) => {
-        const actor = new Actor(page);
+    test('Incorrect username and or password displays an error message', async ({ page }) => {
+        const actor = Actor.named('Incorrect User');
 
         // Navigate to the login page
         await Navigate.toLoginPage(page);
 
         // Perform login with incorrect credentials
-        await actor.perform(LoginTask.loginWithCredentials('incorrect_user', 'wrong_password'));
+        await actor.perform(LoginTask.loginWithCredentials(users.standard.username, 'incorrectPassword'));
 
         // Check for the error message
         const errorMessage = await page.locator('.error-message-container.error h3[data-test="error"]').textContent();
@@ -60,7 +58,7 @@ test.describe('Login Functionality Tests', () => {
     });
 
     test('Displays error when username is missing', async ({ page }) => {
-        const actor = new Actor(page);
+        const actor = Actor.named('Missing Username User');
 
         // Navigate to the login page
         await Navigate.toLoginPage(page);
@@ -74,13 +72,13 @@ test.describe('Login Functionality Tests', () => {
     });
 
     test('Displays error when password is missing', async ({ page }) => {
-        const actor = new Actor(page);
+        const actor = Actor.named('Missing Password User');
 
         // Navigate to the login page
         await Navigate.toLoginPage(page);
 
         // Attempt to log in with a dummy username and no password
-        await actor.perform(LoginTask.loginWithCredentials('dummyUser', ''));
+        await actor.perform(LoginTask.loginWithCredentials(users.standard.username, ''));
 
         // Check for the password missing error message
         const errorMessage = await page.locator('h3[data-test="error"]').textContent();

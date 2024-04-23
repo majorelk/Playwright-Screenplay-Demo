@@ -1,13 +1,25 @@
+// project dir/test/actors/Actor.ts
 import { Page } from "playwright";
 import * as dotenv from "dotenv";
 
 dotenv.config();  // Ensure environment variables are loaded
 
-export class Actor {
-    private page: Page;
+// Class for an actor that can perform tasks
 
-    constructor(page: Page) {
-        this.page = page;
+
+export class Actor {
+    private name: string;
+    page: Page;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    // Method for actor to attempt to perform multiple tasks
+    async attemptsTo(...tasks: ((page: Page) => Promise<void>)[]) {
+        for (const task of tasks) {
+            await task(this.page);
+        }
     }
 
     async perform(task: (page: Page) => Promise<void>) {
@@ -16,5 +28,10 @@ export class Actor {
 
     async ask(question: (page: Page) => Promise<any>) {
         return await question(this.page);
+    }
+
+    // Static method to create a named actor
+    static named(name: string) {
+        return new Actor(name);
     }
 }
