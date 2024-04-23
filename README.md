@@ -53,3 +53,9 @@ Contributions are welcome, please consider forking the repository and submitting
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
+---
+
+### Note
+
+This README assumes that you will set up scripts named `test-ui` and `test-api` in your `package.json`. You should adapt the content to match the actual configuration and scripts of your project. This README provides a comprehensive guide for users to get started with the project, explaining how to set up, run tests, and contribute.
+
