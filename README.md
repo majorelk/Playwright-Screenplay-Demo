@@ -37,3 +37,19 @@ npm install
 ```
 
 ## Running the tests
+To run the front-end UI tests, execute:
+```bash
+npm run test-ui
+```
+
+To execute the hypothetical API tests (as the saucelabs site doesn't provide external API endpoints):
+```
+npm run test-api
+```
+
+## Contributing
+Contributions are welcome, please consider forking the repository and submitting a pull request with your improvements.
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
