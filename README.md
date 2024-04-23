@@ -11,4 +11,29 @@ The purpose of this project is to showcase various testing techniques in Playwri
 - **Screenplay Pattern**: Implementation of the Screenplay pattern to organise test scripts in a highly readable and modular format.
 
 # Preequisites
-Before you can run these tests, 
+Before you can run these tests, you will need to install several dependencies
+
+- Node.js
+- npm
+- Playwright
+- TypeScript
+
+You can install Node.js and NPM from [NodeJs.org](https://nodejs.org). After installation, you can install Playwright and TypeScript using npm:
+
+```bash
+npm install playwright typescript
+```
+## Installation
+
+Clone this repository with Git:
+```bash
+git clone https://github.com/majorelk/Playwright-Screenplay-Demo.git
+cd Playwright-Screenplay-Demo
+```
+
+Install the required NPM packages:
+```
+npm install
+```
+
+## Running the tests
