@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@interactions/*": ["tests/interactions/*"],
+        "@actors/*": ["tests/actors/*"],
+        "@questions/*": ["tests/questions/*"],
+        "@tasks/*": ["tests/tasks/*"],
+        "@scenarios/*": ["tests/scenarios/*"],
+        "@utils/*": ["tests/utils/*"],
+      }
+    }
+  }

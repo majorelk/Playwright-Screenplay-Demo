@@ -1,0 +1,17 @@
+# Dependency directories
+/node_modules/
+
+# Env files
+.env
+
+# Logs
+*.log
+*.csv
+
+# OS files
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+node_modules/.package-lock.json
