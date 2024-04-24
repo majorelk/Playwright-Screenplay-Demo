@@ -1,5 +1,5 @@
 import { Page } from 'playwright';
-import { goToProductPage } from '../interactions/Navigate';
+import { Navigate } from '@interactions/Navigate';
 
 export class AddToCart {
     static withProduct(productId: string) {
@@ -43,6 +43,6 @@ export class ContinueShopping {
 
 export class CheckProductDetails {
     static async viewFirstProductDetails(page: Page) {
-        await goToProductPage(page);
+        await Navigate.toProductPage(page);
     }
 }
