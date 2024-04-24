@@ -1,5 +1,5 @@
 import { Page } from 'playwright';
-import { Navigate } from '@interactions/Navigate';
+import { Navigate } from '@tasks/Navigate';
 
 export class AddToCart {
     static withProduct(productId: string) {

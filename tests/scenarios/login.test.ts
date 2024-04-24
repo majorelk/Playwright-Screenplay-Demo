@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { Actor } from '@actors/Actor';
-import { LoginTask } from '@tasks/LoginTask';
+import { LoginTask } from '@tasks/Login';
 import { canSeePageTitle } from '@questions/PageQuestions';
-import { Navigate } from '@interactions/Navigate';
+import { Navigate } from '@tasks/Navigate';
 import { users } from '@utils/Users';
 
 test.describe('Login Functionality Tests', () => {

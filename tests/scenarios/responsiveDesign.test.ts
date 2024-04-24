@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { Navigate } from '../interactions/Navigate'; // Import the missing 'Navigate' export
-import { LoginTask } from '@tasks/LoginTask';
+import { Navigate } from '../tasks/Navigate'; // Import the missing 'Navigate' export
+import { LoginTask } from '@tasks/Login';
 import { Actor } from '@actors/Actor';
 
 test.describe('Responsive Design Tests', () => {
