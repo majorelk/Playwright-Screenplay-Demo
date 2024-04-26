@@ -1,10 +1,10 @@
 import { Page } from 'playwright';
 import { fillLoginForm } from '@interactions/UserInteractions';
 
-export class LoginTask {
-    static loginWithCredentials(username: string, password: string) {
+export class Login {
+    static withCredentials(username: string, password: string, page: Page) {
         return async (page: Page): Promise<void> => {
-            await fillLoginForm(page, username, password);
+            await fillLoginForm(username, password, page);
         };
     }
 }
