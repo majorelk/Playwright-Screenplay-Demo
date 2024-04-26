@@ -1,4 +1,3 @@
-// questions/CartContents.ts
 import { Page } from 'playwright';
 
 export const getCartContents = async (page: Page): Promise<string[]> => {
