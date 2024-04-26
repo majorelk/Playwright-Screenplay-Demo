@@ -2,6 +2,9 @@ import { Page } from 'playwright';
 import { Navigate } from '@tasks/Navigate';
 
 export class AddToCart {
+    static for(arg0: string): (page: Page) => Promise<void> {
+        throw new Error('Method not implemented.');
+    }
     static withProduct(productId: string) {
         return async (page: Page): Promise<void> => {
             await page.click(`#add-to-cart-${productId}`);
@@ -10,6 +13,9 @@ export class AddToCart {
 }
 
 export class RemoveFromCart {
+    static for(arg0: string): (page: Page) => Promise<void> {
+        throw new Error('Method not implemented.');
+    }
     static withProduct(productId: string) {
         return async (page: Page): Promise<void> => {
             await page.click(`#remove-from-cart-${productId}`);
