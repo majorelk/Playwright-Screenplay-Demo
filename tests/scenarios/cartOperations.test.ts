@@ -42,7 +42,7 @@ test.describe('Cart Operations Tests', () => {
 
         // Remove an item and verify
         await actor.perform(RemoveFromCart.for('Sauce Labs Bike Light'));
-        cartContents = await actor.ask(canSeeExpectedItemsInCart());
+        cartContents = await actor.ask(getCartContents);
         expect(cartContents).not.toContain('Sauce Labs Bike Light');
     });
 });
