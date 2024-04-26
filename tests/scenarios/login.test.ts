@@ -20,7 +20,7 @@ test.describe('Login Functionality Tests', () => {
 
         // Navigate and login
         await actor.perform(Navigate.toLoginPage);
-        await actor.perform(Login.withCredentials(users.lockedOut.username, users.lockedOut.password));
+        await actor.perform(Login.withCredentials(users.lockedOut.username, users.lockedOut.password, page));
 
         // Check for error message
         const errorMessage = await page.locator('.error-message-container').textContent();
@@ -37,7 +37,7 @@ test.describe('Login Functionality Tests', () => {
         // Setting a longer timeout specifically for this user's interactions
         page.setDefaultTimeout(15000); // Extending timeout for all actions on this page
 
-        await actor.perform(Login.withCredentials(users.performanceGlitch.username, users.performanceGlitch.password));
+        await actor.perform(Login.withCredentials(users.performanceGlitch.username, users.performanceGlitch.password, page));
         const endTime = performance.now();
         // Wait for the network to be idle before clicking
         const title = await actor.ask(() => canSeePageTitle(page));
@@ -54,7 +54,7 @@ test.describe('Login Functionality Tests', () => {
         await Navigate.toLoginPage(page);
 
         // Perform login with incorrect credentials
-        await actor.perform(Login.withCredentials(users.standard.username, 'incorrectPassword'));
+        await actor.perform(Login.withCredentials(users.standard.username, 'incorrectPassword', page));
 
         // Check for the error message
         const errorMessage = await page.locator('.error-message-container.error h3[data-test="error"]').textContent();
@@ -68,7 +68,7 @@ test.describe('Login Functionality Tests', () => {
         await Navigate.toLoginPage(page);
 
         // Attempt to log in with no username and a dummy password
-        await actor.perform(Login.withCredentials('', 'dummyPassword'));
+        await actor.perform(Login.withCredentials('', 'dummyPassword', page));
 
         // Check for the username missing error message
         const errorMessage = await page.locator('.error-message-container.error h3[data-test="error"]').textContent();
@@ -82,7 +82,7 @@ test.describe('Login Functionality Tests', () => {
         await Navigate.toLoginPage(page);
 
         // Attempt to log in with a dummy username and no password
-        await actor.perform(Login.withCredentials(users.standard.username, ''));
+        await actor.perform(Login.withCredentials(users.standard.username, '', page));
 
         // Check for the password missing error message
         const errorMessage = await page.locator('h3[data-test="error"]').textContent();
