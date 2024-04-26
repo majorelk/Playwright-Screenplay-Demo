@@ -1,4 +1,3 @@
-// project dir/test/actors/Actor.ts
 import { Page } from "playwright";
 import * as dotenv from "dotenv";
 
